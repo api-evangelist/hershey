@@ -1,0 +1,119 @@
+generated: '2026-09-13'
+method: probed
+source: live HTTPS probes of every host this record knows, 2026-09-13
+note: >-
+  Every named /.well-known/ path was probed on all four hosts The Hershey Company operates.
+  NOTHING was served. Two distinct negative shapes were observed and both are recorded honestly:
+  the AEM corporate CMS (www.thehersheycompany.com) returns a genuine HTTP 404 HTML error page for
+  /.well-known/*, while the consumer brand host (www.hersheyland.com) is a single-page-app
+  catch-all that answers HTTP 200 with the site shell for EVERY path — including
+  /.well-known/agent-card.json, /llms.txt and /openapi.json. Those 200s are NOT documents and are
+  marked served_document: false. A third shape appears at the corporate site root: an F5/Shape
+  "Client Challenge" interstitial (body contains /_fs-ch-*) answers 200 for /security.txt,
+  /robots.txt and /sitemap.xml. That is a bot challenge, not a document, and is also marked false.
+  No WellKnown or SecurityTxt pointer is emitted in apis.yml because no path returned a real
+  document — per the enrichment contract, the pointer asserts the provider SERVES the surface.
+hosts:
+  - host: www.thehersheycompany.com
+    note: corporate site (Adobe Experience Manager); real 404s under /.well-known/
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        served_document: false
+        file: null
+      - path: /security.txt
+        status: 200
+        served_document: false
+        note: F5/Shape "Client Challenge" interstitial, not an RFC 9116 document
+        file: null
+  - host: thehersheycompany.com
+    note: apex redirects to www (HTTP 301) for every path
+    documents:
+      - path: /.well-known/security.txt
+        status: 301
+        served_document: false
+        file: null
+      - path: /.well-known/api-catalog
+        status: 301
+        served_document: false
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 301
+        served_document: false
+        file: null
+  - host: www.hersheyland.com
+    note: >-
+      consumer brand site; SPA catch-all answers 200 with the HTML shell for every path.
+      This is the dominant false-positive shape for agent-card probes — none of these 200s
+      is a document.
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        served_document: false
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 200
+        served_document: false
+        note: 'body is <!DOCTYPE html> SPA shell, not an AgentCard JSON object — rejected'
+        file: null
+      - path: /.well-known/agent.json
+        status: 200
+        served_document: false
+        note: 'body is <!DOCTYPE html> SPA shell, not an AgentCard JSON object — rejected'
+        file: null
+      - path: /llms.txt
+        status: 200
+        served_document: false
+        note: 'body is <!DOCTYPE html> SPA shell, not an llms.txt document — rejected'
+        file: null
+  - host: investors.thehersheycompany.com
+    note: investor relations host
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        served_document: false
+        file: null
+      - path: /llms.txt
+        status: 404
+        served_document: false
+        file: null

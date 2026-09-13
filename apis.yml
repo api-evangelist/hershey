@@ -20,17 +20,26 @@ accessModel:
   public: false
   label: Unknown
   confidence: low
-  source: []
   generated: '2026-07-22'
   method: derived
   source:
-  - {url: 'https://www.hershey.com', status: 301, note: 'declared website redirects to https://www.hersheyland.com/ — a different registrable domain (hershey.com -> hersheyland.com), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  - {url: 'https://www.hershey.com', status: 301, note: 'hershey.com 301s to the consumer brand site www.hersheyland.com. Re-probed 2026-09-13: this is neither a rename nor an acquisition — The Hershey Company''s corporate site is www.thehersheycompany.com (HTTP 200), and hershey.com is a brand redirect. Website pointer corrected to the corporate host.'}
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/hershey.png
 tags:
   - Fortune 500
+  - Consumer Packaged Goods
+  - Food and Beverage
+  - Confectionery
+  - Snacks
+  - Manufacturing
+  - Retail
 url: 
   https://raw.githubusercontent.com/api-evangelist/hershey/refs/heads/main/apis.yml
-modified: '2026-04-28'
+created: '2026-04-28'
+modified: '2026-09-13'
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
 apis: []
 common:
   - type: DomainSecurity
@@ -38,7 +47,48 @@ common:
   - type: LinkedIn
     url: https://www.linkedin.com/company/the-hershey-company
   - type: Website
-    url: https://www.hershey.com
+    url: https://www.thehersheycompany.com
+  - type: PrivacyPolicy
+    url: https://www.thehersheycompany.com/en_us/home/privacy-policy.html
+  - type: Blog
+    url: https://www.thehersheycompany.com/en_us/home/newsroom.html
 description: >-
-  Hersheyland is home to our favorite dessert recipes, the latest candy innovations
-  and endless sweet inspiration, from everyday treats to special occasion bakes.
+  The Hershey Company is a Fortune 500 confectionery and snacking manufacturer headquartered in
+  Hershey, Pennsylvania, producing Hershey's, Reese's, Kit Kat (US), Jolly Rancher, Ice Breakers,
+  SkinnyPop and Dot's Pretzels across North America and international markets. Hershey is a consumer
+  packaged goods company rather than a software vendor: it publishes no developer portal, no public
+  API reference, and no machine-readable contract. Its public digital surface is the corporate site
+  at thehersheycompany.com, the consumer brand site Hersheyland (hershey.com redirects there), and
+  an investor relations site. This profile records that absence with the probes behind it, alongside
+  press and blog coverage of the company's internal AI and data-platform investment.
+
+x-enrichment:
+  date: '2026-09-13'
+  status: minimal
+  artifacts_added: 1
+  pass: local-v3
+x-coverage:
+  state: none
+  reason: not-a-software-company
+  detail: >-
+    The Hershey Company is a confectionery and snacking manufacturer, not a software vendor — there
+    is no developer subdomain (developer./api./apis./developers. on hershey.com and
+    thehersheycompany.com all fail to resolve), no GitHub organization under hershey,
+    thehersheycompany, hersheycompany or hersheys, and no first-party package on npm; the corporate
+    AEM site returns real 404s for every /.well-known/ path and the consumer brand site
+    www.hersheyland.com is an SPA catch-all whose 200s on /llms.txt and /.well-known/agent-card.json
+    are the HTML shell, not documents.
+  evidence:
+    - url: https://www.thehersheycompany.com/.well-known/api-catalog
+      status: 404
+    - url: https://www.thehersheycompany.com/.well-known/agent-card.json
+      status: 404
+    - url: https://api.github.com/orgs/thehersheycompany
+      status: 404
+    - url: https://developer.thehersheycompany.com
+      status: 0
+    - url: https://www.hersheyland.com/llms.txt
+      status: 200
+    - url: https://www.thehersheycompany.com
+      status: 200
+  checked: '2026-09-13'
