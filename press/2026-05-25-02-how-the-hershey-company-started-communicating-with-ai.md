@@ -1,7 +1,9 @@
 ---
 title: How The Hershey Company started communicating with AI ...
 url: https://www.ragan.com/hershey-company-ashleigh-pollart-ai/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Hershey" press release artificial intelligence'
 position: 2
 source: serpapi-google

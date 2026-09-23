@@ -1,7 +1,9 @@
 ---
 title: Hershey's and Coca-Cola modernize creativity with AI ...
 url: https://www.emarketer.com/content/hershey-s-coca-cola-modernize-creativity-with-ai-systems
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Hershey" press release artificial intelligence'
 position: 5
 source: serpapi-google

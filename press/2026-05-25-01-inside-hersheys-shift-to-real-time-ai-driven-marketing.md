@@ -1,7 +1,9 @@
 ---
 title: Inside Hershey's Shift to Real-Time, AI-Driven Marketing
 url: https://www.thehersheycompany.com/en_us/home/newsroom/blog/inside-hersheys-shift-to-real-time-ai-driven-marketing.html
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Hershey" press release artificial intelligence'
 position: 1
 source: serpapi-google

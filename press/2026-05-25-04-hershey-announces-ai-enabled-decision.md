@@ -1,7 +1,9 @@
 ---
 title: HERSHEY ANNOUNCES AI-ENABLED DECISION
 url: https://www.facebook.com/tristatenewscenter/posts/hershey-announces-ai-enabled-decision-making-the-hershey-company-is-embracing-ai/1553526290109232/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Hershey" press release artificial intelligence'
 position: 4
 source: serpapi-google
